@@ -1,0 +1,41 @@
+name: fitbody
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  cloud_firestore: ^6.0.1
+  firebase_auth: ^6.0.2
+  firebase_core: ^4.1.0
+  flutter:
+    sdk: flutter
+  flutter_native_splash: ^2.4.6
+  google_fonts: ^6.3.1
+  intro_slider: ^4.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo.png
+    - assets/images/w1.png
+    - assets/images/w12.png
+    - assets/images/w2.png
+    - assets/images/g1.png
+    - assets/images/w3.png
+    - assets/images/g2.png
+    - assets/images/w4.png
+    - assets/images/g3.png
+
+flutter_native_splash:
+  color: "#232323"
+  image: assets/images/logo.png
+  android: true
+  ios: true
