@@ -76,13 +76,30 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 35, 35, 35),
       body: SingleChildScrollView(
         child: Container(
           child: Center(
             child: Column(
               children: [
                 SizedBox(height: 150),
-                Image.asset('assets/images/logo1.png', height: 80),
+                Text(
+                  ' Create Account',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 226, 241, 99),
+                  ),
+                ),
+                SizedBox(height: 40),
+                Text(
+                  'Let\'s Start',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
                 SizedBox(height: 20),
                 Container(
                   height: 270,
@@ -94,16 +111,20 @@ class _RegisterState extends State<Register> {
                       TextField(
                         controller: _email,
                         keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.email_outlined),
                           hintText: 'Enter your email',
                           labelText: 'Email Address',
-                          labelStyle: TextStyle(color: Colors.grey),
+                          labelStyle: TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red, width: 2),
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 179, 160, 255),
+                              width: 2,
+                            ),
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
@@ -112,11 +133,12 @@ class _RegisterState extends State<Register> {
                       TextField(
                         controller: _password,
                         obscureText: _obscureText,
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock_outline),
                           hintText: 'Enter your password',
                           labelText: 'Password',
-                          labelStyle: TextStyle(color: Colors.grey),
+                          labelStyle: TextStyle(color: Colors.white),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
@@ -134,19 +156,22 @@ class _RegisterState extends State<Register> {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.red, width: 2),
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 179, 160, 255),
+                              width: 2,
+                            ),
                           ),
                         ),
                       ),
 
                       SizedBox(height: 20),
                       Container(
-                        height: 35,
-                        width: 200,
+                        height: 36,
+                        width: 150,
                         decoration: BoxDecoration(
-                          color: Colors.transparent,
+                          color: const Color.fromARGB(37, 255, 255, 255),
                           borderRadius: BorderRadius.all(Radius.circular(15)),
-                          border: Border.all(width: 1, color: Colors.black),
+                          border: Border.all(width: 1, color: Colors.white),
                         ),
 
                         child: TextButton(
@@ -198,8 +223,8 @@ class _RegisterState extends State<Register> {
                             }
                           },
                           child: Text(
-                            'CREATE ACCOUNT',
-                            style: TextStyle(color: Colors.black, fontSize: 10),
+                            'Sign Up',
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
@@ -211,36 +236,38 @@ class _RegisterState extends State<Register> {
                             fontSize: 10,
                             color: Colors.grey,
                           ),
-                          textAlign: TextAlign.justify,
+                          textAlign: TextAlign.center,
                           softWrap: true,
                         ),
                       ),
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already have an account?',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.3),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Login()),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Already have an account?',
+                        style: TextStyle(color: Colors.white, fontSize: 10),
                       ),
-                      child: Text('LOGIN', style: TextStyle(color: Colors.red)),
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: 20),
-
-                SizedBox(height: 10),
-                Text(
-                  '© DOTBY PRODUCTIONS',
-                  style: TextStyle(color: Colors.grey),
+                      SizedBox(width: 5),
+                      Text(
+                        'Log In',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 226, 241, 99),
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

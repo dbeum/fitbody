@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitbody/firebase_options.dart';
+import 'package:fitbody/register.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -62,6 +63,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 35, 35, 35),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -70,19 +72,30 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     SizedBox(height: 150),
-                    Image.asset('assets/images/logo1.png', height: 80),
-                    SizedBox(height: 50),
                     Text(
-                      'Welcome Back',
+                      'Log In',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 226, 241, 99),
                       ),
                     ),
-                    Text('Sign into your account to continue'),
+                    SizedBox(height: 50),
+                    Text(
+                      'Welcome',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      'Sign into your account to continue',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     SizedBox(height: 50),
                     Container(
-                      height: 300,
+                      //  height: 300,
                       width: 300,
 
                       child: FutureBuilder(
@@ -97,17 +110,18 @@ class _LoginState extends State<Login> {
                               TextField(
                                 controller: _email,
                                 keyboardType: TextInputType.emailAddress,
+                                style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.email_outlined),
                                   hintText: 'Enter your email',
                                   labelText: 'Email Address',
-                                  labelStyle: TextStyle(color: Colors.grey),
+                                  labelStyle: TextStyle(color: Colors.white),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.red,
+                                      color: Color.fromARGB(255, 179, 160, 255),
                                       width: 2,
                                     ),
                                     borderRadius: BorderRadius.circular(12),
@@ -118,11 +132,12 @@ class _LoginState extends State<Login> {
                               TextField(
                                 controller: _password,
                                 obscureText: _obscureText,
+                                style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.lock_outline),
                                   hintText: 'Enter your password',
                                   labelText: 'Password',
-                                  labelStyle: TextStyle(color: Colors.grey),
+                                  labelStyle: TextStyle(color: Colors.white),
                                   suffixIcon: IconButton(
                                     icon: Icon(
                                       _obscureText
@@ -141,70 +156,30 @@ class _LoginState extends State<Login> {
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
                                     borderSide: BorderSide(
-                                      color: Colors.red,
+                                      color: Color.fromARGB(255, 179, 160, 255),
                                       width: 2,
                                     ),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 20),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 30,
-                                    width: 135,
-                                    //    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5)),color:Colors.black,),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        //
-                                        //Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Home2() ));
-                                      },
-                                      child: Text(
-                                        'EXPLORE AS GUEST',
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 20,
-                                    width: 2,
-                                    color: Colors.black,
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    width: 120,
 
-                                    child: TextButton(
-                                      onPressed: () {
-                                        // Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Register() ));
-                                      },
-                                      child: Text(
-                                        'CREATE ACCOUNT',
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
                               SizedBox(height: 20),
 
                               Container(
-                                height: 35,
-                                width: 200,
+                                height: 36,
+                                width: 150,
                                 decoration: BoxDecoration(
-                                  color: Colors.transparent,
+                                  color: const Color.fromARGB(
+                                    37,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(15),
                                   ),
                                   border: Border.all(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     width: 1,
                                   ),
                                 ),
@@ -266,12 +241,50 @@ class _LoginState extends State<Login> {
                                     }
                                   },
                                   child: Text(
-                                    'LOGIN',
-                                    style: TextStyle(color: Colors.black),
+                                    'Log In',
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 2),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.3,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Register(),
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Dont have an account?',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text(
+                                      'Sign Up',
+                                      style: TextStyle(
+                                        color: Color.fromARGB(
+                                          255,
+                                          226,
+                                          241,
+                                          99,
+                                        ),
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           );
 

@@ -1,3 +1,4 @@
+import 'package:fitbody/login.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
 
@@ -53,7 +54,10 @@ class _WelcomeState extends State<Welcome> {
 
   void onDonePress() {
     // Navigate to home screen
-    Navigator.pushReplacementNamed(context, "/Login");
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Login()),
+    );
   }
 
   @override
