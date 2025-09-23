@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitbody/firebase_options.dart';
 import 'package:fitbody/login.dart';
+import 'package:fitbody/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -76,7 +77,6 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 35, 35, 35),
       body: SingleChildScrollView(
         child: Container(
           child: Center(
@@ -179,7 +179,7 @@ class _RegisterState extends State<Register> {
                           onPressed: () async {
                             final email = _email.text;
                             final password = _password.text;
-                            final role = 'user';
+                            final gender = null; // Added gender variable
                             try {
                               final userCredential = await FirebaseAuth.instance
                                   .createUserWithEmailAndPassword(
@@ -190,7 +190,13 @@ class _RegisterState extends State<Register> {
                               await FirebaseFirestore.instance
                                   .collection('users')
                                   .doc(userCredential.user!.uid)
-                                  .set({'email': email, 'role': role});
+                                  .set({
+                                    'email': email,
+                                    'gender': null,
+                                    'age': null,
+                                    'weight': null,
+                                    'height': null,
+                                  });
 
                               print(
                                 'User registered: ${userCredential.user!.uid}',
@@ -214,12 +220,15 @@ class _RegisterState extends State<Register> {
                                 } else if (e.code == 'invalid-email') {
                                   showTopSnackBar(context, "Invalid Email");
                                 } else {
-                                  print(e);
+                                  showTopSnackBar(
+                                    context,
+                                    "Registration Failed",
+                                  );
                                 }
                               } else {
                                 print('Unexpected error: $e');
+                                showTopSnackBar(context, "Registration Failed");
                               }
-                              showTopSnackBar(context, "Registration Failed");
                             }
                           },
                           child: Text(

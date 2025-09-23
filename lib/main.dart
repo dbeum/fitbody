@@ -1,11 +1,30 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitbody/femalemodel.dart';
+import 'package:fitbody/kgmodel.dart';
+import 'package:fitbody/lbsmodel.dart';
+import 'package:fitbody/malemodel.dart';
+import 'package:fitbody/register.dart';
+import 'package:fitbody/setup.dart';
+import 'package:fitbody/setup3.dart';
+import 'package:fitbody/setup5.dart';
 import 'package:fitbody/welcome.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MainApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MaleModel()),
+        ChangeNotifierProvider(create: (_) => FemaleModel()),
+        ChangeNotifierProvider(create: (_) => KgModel()),
+        ChangeNotifierProvider(create: (_) => LbsModel()),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -18,12 +37,13 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: true,
-
+        appBarTheme: AppBarTheme(color: Color.fromARGB(255, 35, 35, 35)),
+        scaffoldBackgroundColor: Color.fromARGB(255, 35, 35, 35),
         primarySwatch: Colors.deepOrange,
         textTheme: TextTheme(
-          bodyLarge: TextStyle(color: Colors.black),
-          bodyMedium: TextStyle(color: Colors.black),
-          bodySmall: TextStyle(color: Colors.black),
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
+          bodySmall: TextStyle(color: Colors.white),
         ),
         // Other theme settings...
       ),
@@ -32,7 +52,8 @@ class MainApp extends StatelessWidget {
         useMaterial3: true,
         // Define your dark theme here
         primarySwatch: Colors.deepOrange,
-        scaffoldBackgroundColor: Color.fromARGB(255, 32, 32, 32),
+        appBarTheme: AppBarTheme(color: Color.fromARGB(255, 35, 35, 35)),
+        scaffoldBackgroundColor: Color.fromARGB(255, 35, 35, 35),
         textTheme: TextTheme(
           bodyLarge: TextStyle(color: Colors.white),
           bodyMedium: TextStyle(color: Colors.white),

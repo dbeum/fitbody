@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitbody/firebase_options.dart';
+import 'package:fitbody/setup.dart';
 import 'package:fitbody/register.dart';
 import 'package:flutter/material.dart';
 
@@ -210,18 +211,15 @@ class _LoginState extends State<Login> {
                                           final data =
                                               userDoc.data()
                                                   as Map<String, dynamic>?;
-                                          final role = data?['role'] as String?;
 
-                                          // Retrieve role
-
-                                          if (user.email == 'admin@dotby.com' &&
-                                              role == 'admin') {
-                                            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Team2()));
-                                          } else {
-                                            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
-                                          }
-
-                                          print('Logged in as: $role');
+                                          print('User ID: ${user.uid}');
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Setup(),
+                                            ),
+                                          );
+                                          print('Logged in as: ${user.email}');
                                         } else {
                                           print('User data not found');
                                           showTopSnackBar(
