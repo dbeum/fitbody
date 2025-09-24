@@ -196,6 +196,9 @@ class _RegisterState extends State<Register> {
                                     'age': null,
                                     'weight': null,
                                     'height': null,
+                                    'fullname': null,
+                                    'nickname': null,
+                                    "profileImage": null,
                                   });
 
                               print(

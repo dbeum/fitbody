@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitbody/setup2.dart';
 import 'package:fitbody/setup5.dart';
+import 'package:fitbody/setup7.dart';
 import 'package:flutter/material.dart';
 
 class Setup6 extends StatefulWidget {
@@ -35,17 +36,19 @@ class _Setup6State extends State<Setup6> {
             ),
           ),
           SizedBox(height: 50),
-          Container(
-            width: 350,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 179, 160, 255),
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-            ),
-            child: Column(
-              children: [
-                CheckboxListTile(
+          Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.height * 0.4,
+                padding: EdgeInsets.only(right: 20, left: 20),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(37, 255, 255, 255),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  border: Border.all(width: 1, color: Colors.white),
+                ),
+                child: CheckboxListTile(
                   value: checkbox,
+
                   key: Key('checkbox1'),
                   onChanged: (value) {
                     setState(() {
@@ -66,8 +69,17 @@ class _Setup6State extends State<Setup6> {
                   contentPadding: EdgeInsets.zero,
                   tileColor: Colors.transparent,
                 ),
-
-                CheckboxListTile(
+              ),
+              SizedBox(height: 10),
+              Container(
+                width: MediaQuery.of(context).size.height * 0.4,
+                padding: EdgeInsets.only(right: 20, left: 20),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(37, 255, 255, 255),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  border: Border.all(width: 1, color: Colors.white),
+                ),
+                child: CheckboxListTile(
                   value: checkbox2,
                   key: Key('checkbox2'),
                   onChanged: (value) {
@@ -89,7 +101,17 @@ class _Setup6State extends State<Setup6> {
                   contentPadding: EdgeInsets.zero,
                   tileColor: Colors.transparent,
                 ),
-                CheckboxListTile(
+              ),
+              SizedBox(height: 10),
+              Container(
+                width: MediaQuery.of(context).size.height * 0.4,
+                padding: EdgeInsets.only(right: 20, left: 20),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(37, 255, 255, 255),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  border: Border.all(width: 1, color: Colors.white),
+                ),
+                child: CheckboxListTile(
                   value: checkbox3,
                   key: Key('checkbox3'),
                   onChanged: (value) {
@@ -111,7 +133,17 @@ class _Setup6State extends State<Setup6> {
                   contentPadding: EdgeInsets.zero,
                   tileColor: Colors.transparent,
                 ),
-                CheckboxListTile(
+              ),
+              SizedBox(height: 10),
+              Container(
+                width: MediaQuery.of(context).size.height * 0.4,
+                padding: EdgeInsets.only(right: 20, left: 20),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(37, 255, 255, 255),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  border: Border.all(width: 1, color: Colors.white),
+                ),
+                child: CheckboxListTile(
                   value: checkbox4,
                   key: Key('checkbox4'),
                   onChanged: (value) {
@@ -133,7 +165,17 @@ class _Setup6State extends State<Setup6> {
                   contentPadding: EdgeInsets.zero,
                   tileColor: Colors.transparent,
                 ),
-                CheckboxListTile(
+              ),
+              SizedBox(height: 10),
+              Container(
+                width: MediaQuery.of(context).size.height * 0.4,
+                padding: EdgeInsets.only(right: 20, left: 20),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(37, 255, 255, 255),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  border: Border.all(width: 1, color: Colors.white),
+                ),
+                child: CheckboxListTile(
                   value: checkbox5,
                   key: Key('checkbox5'),
                   onChanged: (value) {
@@ -151,13 +193,15 @@ class _Setup6State extends State<Setup6> {
                   ),
                   activeColor: Color.fromARGB(255, 226, 241, 99),
                   checkColor: Colors.white,
+
                   controlAffinity: ListTileControlAffinity.trailing,
                   contentPadding: EdgeInsets.zero,
                   tileColor: Colors.transparent,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+
           SizedBox(height: 200),
           GestureDetector(
             onTap: () async {
@@ -168,11 +212,11 @@ class _Setup6State extends State<Setup6> {
               //       .doc(user.uid)
               //       .set({"height": selectedHeight}, SetOptions(merge: true));
 
-              //   Navigator.pushReplacement(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => Setup6()),
-              //   );
-              // }
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Setup7()),
+              );
+              //   }
             },
             child: Container(
               height: 36,

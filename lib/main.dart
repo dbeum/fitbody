@@ -1,5 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitbody/amodel.dart';
+import 'package:fitbody/bModel.dart';
+import 'package:fitbody/bio.dart';
 import 'package:fitbody/femalemodel.dart';
+import 'package:fitbody/imodel.dart';
 import 'package:fitbody/kgmodel.dart';
 import 'package:fitbody/lbsmodel.dart';
 import 'package:fitbody/malemodel.dart';
@@ -7,6 +11,7 @@ import 'package:fitbody/register.dart';
 import 'package:fitbody/setup.dart';
 import 'package:fitbody/setup3.dart';
 import 'package:fitbody/setup5.dart';
+import 'package:fitbody/setup7.dart';
 import 'package:fitbody/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +26,9 @@ void main() async {
         ChangeNotifierProvider(create: (_) => FemaleModel()),
         ChangeNotifierProvider(create: (_) => KgModel()),
         ChangeNotifierProvider(create: (_) => LbsModel()),
+        ChangeNotifierProvider(create: (_) => Bmodel()),
+        ChangeNotifierProvider(create: (_) => Imodel()),
+        ChangeNotifierProvider(create: (_) => Amodel()),
       ],
       child: const MainApp(),
     ),
@@ -61,7 +69,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
-      home: Welcome(),
+      home: Bio(),
       debugShowCheckedModeBanner: false,
     );
   }
