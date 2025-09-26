@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitbody/femalemodel.dart';
-import 'package:fitbody/kgmodel.dart';
-import 'package:fitbody/lbsmodel.dart';
-import 'package:fitbody/malemodel.dart';
-import 'package:fitbody/setup5.dart';
+import 'package:fitbody/provider/femalemodel.dart';
+import 'package:fitbody/provider/kgmodel.dart';
+import 'package:fitbody/provider/lbsmodel.dart';
+import 'package:fitbody/provider/malemodel.dart';
+import 'package:fitbody/setup/setupheight.dart';
 import 'package:flutter/material.dart';
 import 'package:numeric_selector/numeric_selector.dart';
 import 'package:provider/provider.dart';

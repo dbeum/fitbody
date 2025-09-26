@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitbody/amodel.dart';
-import 'package:fitbody/bModel.dart';
-import 'package:fitbody/imodel.dart';
+import 'package:fitbody/provider/amodel.dart';
+import 'package:fitbody/provider/bModel.dart';
+import 'package:fitbody/provider/imodel.dart';
+import 'package:fitbody/setup/bio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -144,10 +145,10 @@ class _Setup7State extends State<Setup7> {
                 //       .doc(user.uid)
                 //       .set({"gender": selectedGender}, SetOptions(merge: true));
 
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Setup3()),
-                //  );
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Bio()),
+                );
                 //   }
               },
               child: Container(

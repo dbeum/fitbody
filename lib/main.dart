@@ -1,17 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fitbody/amodel.dart';
-import 'package:fitbody/bModel.dart';
-import 'package:fitbody/bio.dart';
-import 'package:fitbody/femalemodel.dart';
-import 'package:fitbody/imodel.dart';
-import 'package:fitbody/kgmodel.dart';
-import 'package:fitbody/lbsmodel.dart';
-import 'package:fitbody/malemodel.dart';
+import 'package:fitbody/home.dart';
+import 'package:fitbody/nav.dart';
+import 'package:fitbody/provider/amodel.dart';
+import 'package:fitbody/provider/bModel.dart';
+import 'package:fitbody/setup/bio.dart';
+import 'package:fitbody/provider/femalemodel.dart';
+import 'package:fitbody/provider/imodel.dart';
+import 'package:fitbody/provider/kgmodel.dart';
+import 'package:fitbody/provider/lbsmodel.dart';
+import 'package:fitbody/provider/malemodel.dart';
 import 'package:fitbody/register.dart';
-import 'package:fitbody/setup.dart';
-import 'package:fitbody/setup3.dart';
-import 'package:fitbody/setup5.dart';
-import 'package:fitbody/setup7.dart';
+import 'package:fitbody/setup/setup.dart';
+import 'package:fitbody/setup/setupage.dart';
+import 'package:fitbody/setup/setupheight.dart';
+import 'package:fitbody/setup/setupactivity.dart';
 import 'package:fitbody/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -69,7 +71,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
-      home: Bio(),
+      home: Nav(),
       debugShowCheckedModeBanner: false,
     );
   }

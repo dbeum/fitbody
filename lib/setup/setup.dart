@@ -1,4 +1,4 @@
-import 'package:fitbody/setup2.dart';
+import 'package:fitbody/setup/setupgender.dart';
 import 'package:flutter/material.dart';
 
 class Setup extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitbody/setup2.dart';
-import 'package:fitbody/setup5.dart';
-import 'package:fitbody/setup7.dart';
+import 'package:fitbody/setup/setupgender.dart';
+import 'package:fitbody/setup/setupheight.dart';
+import 'package:fitbody/setup/setupactivity.dart';
 import 'package:flutter/material.dart';
 
 class Setup6 extends StatefulWidget {

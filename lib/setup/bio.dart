@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitbody/cloudinary.dart';
 import 'package:fitbody/firebase_options.dart';
-import 'package:fitbody/setup.dart';
+import 'package:fitbody/home.dart';
+import 'package:fitbody/setup/setup.dart';
 import 'package:fitbody/register.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -213,6 +214,12 @@ class _BioState extends State<Bio> {
                                             "profileImage": imageUrl ?? '',
                                           }, SetOptions(merge: true));
                                     }
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (Context) => Home(),
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     'Start',

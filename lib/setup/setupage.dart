@@ -1,23 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitbody/femalemodel.dart';
-import 'package:fitbody/malemodel.dart';
-import 'package:fitbody/setup4.dart';
-import 'package:fitbody/setup6.dart';
+import 'package:fitbody/provider/femalemodel.dart';
+import 'package:fitbody/provider/malemodel.dart';
+import 'package:fitbody/setup/setupweight.dart';
 import 'package:flutter/material.dart';
 import 'package:numeric_selector/numeric_selector.dart';
 import 'package:provider/provider.dart';
 
-class Setup5 extends StatefulWidget {
-  const Setup5({super.key});
+class Setup3 extends StatefulWidget {
+  const Setup3({super.key});
 
   @override
-  State<Setup5> createState() => _Setup5State();
+  State<Setup3> createState() => _Setup3State();
 }
 
-class _Setup5State extends State<Setup5> {
-  String? selectedHeight;
-
+class _Setup3State extends State<Setup3> {
+  String? selectedAge;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,7 @@ class _Setup5State extends State<Setup5> {
         children: [
           Center(
             child: Text(
-              'What is Your Height?',
+              'How Old Are You?',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -36,29 +34,34 @@ class _Setup5State extends State<Setup5> {
           ),
           SizedBox(height: 50),
 
-          VerticalNumericSelector(
-            minValue: 50,
-            maxValue: 250,
-            height: 400,
+          HorizontalNumericSelector(
+            minValue: 13,
+            maxValue: 100,
             step: 1,
-            initialValue: 55,
+            initialValue: 20,
             onValueChanged: (value) {
+              // setState(() {
+              //   selectedAge = value.toString();
+              // });
               print("Selected Value: $value");
             },
-            viewPort: 0.25,
+            viewPort: 0.3,
             selectedTextStyle: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
             ),
-            unselectedTextStyle: TextStyle(fontSize: 24, color: Colors.grey),
-            backgroundColor: Colors.white,
-            borderRadius: BorderRadius.circular(10),
+            unselectedTextStyle: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: const Color.fromARGB(124, 0, 0, 0),
+            ),
+            backgroundColor: Color.fromARGB(255, 179, 160, 255),
             showLabel: true,
-            label: "cm",
+            label: "Years Old",
             showArrows: true,
             enableVibration: true,
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 300),
           GestureDetector(
             onTap: () async {
               final user = FirebaseAuth.instance.currentUser;
@@ -66,11 +69,11 @@ class _Setup5State extends State<Setup5> {
                 await FirebaseFirestore.instance
                     .collection("users")
                     .doc(user.uid)
-                    .set({"height": selectedHeight}, SetOptions(merge: true));
+                    .set({"age": selectedAge}, SetOptions(merge: true));
 
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => Setup6()),
+                  MaterialPageRoute(builder: (context) => Setup4()),
                 );
               }
             },
