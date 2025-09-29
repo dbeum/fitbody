@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitbody/provider/amodel.dart';
-import 'package:fitbody/provider/bModel.dart';
-import 'package:fitbody/provider/imodel.dart';
+import 'package:fitbody/provider/activitymodel.dart';
+
 import 'package:fitbody/setup/bio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,9 +15,7 @@ class Setup7 extends StatefulWidget {
 
 class _Setup7State extends State<Setup7> {
   Widget build(BuildContext context) {
-    final aProvider = Provider.of<Amodel>(context);
-    final bProvider = Provider.of<Bmodel>(context);
-    final iProvider = Provider.of<Imodel>(context);
+    final aProvider = Provider.of<Activitymodel>(context);
 
     return Scaffold(
       appBar: AppBar(),
@@ -38,9 +35,9 @@ class _Setup7State extends State<Setup7> {
 
           GestureDetector(
             onTap: () {
-              bProvider.togglebmode();
-              if (bProvider.bmodel == true) {
-                iProvider.imodel = false;
+              aProvider.togglebmode();
+              if (aProvider.bmodel == true) {
+                aProvider.imodel = false;
                 aProvider.amodel = false;
               }
             },
@@ -48,7 +45,7 @@ class _Setup7State extends State<Setup7> {
               height: 60,
               width: 300,
               decoration: BoxDecoration(
-                color: bProvider.bmodel
+                color: aProvider.bmodel
                     ? Color.fromARGB(255, 226, 241, 99)
                     : Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -59,7 +56,7 @@ class _Setup7State extends State<Setup7> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: bProvider.bmodel
+                    color: aProvider.bmodel
                         ? Colors.white
                         : Color.fromARGB(255, 179, 160, 255),
                   ),
@@ -71,9 +68,9 @@ class _Setup7State extends State<Setup7> {
 
           GestureDetector(
             onTap: () {
-              iProvider.toggleimode();
-              if (iProvider.imodel == true) {
-                bProvider.bmodel = false;
+              aProvider.toggleimode();
+              if (aProvider.imodel == true) {
+                aProvider.bmodel = false;
                 aProvider.amodel = false;
               }
             },
@@ -81,7 +78,7 @@ class _Setup7State extends State<Setup7> {
               height: 60,
               width: 300,
               decoration: BoxDecoration(
-                color: iProvider.imodel
+                color: aProvider.imodel
                     ? Color.fromARGB(255, 226, 241, 99)
                     : Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -92,7 +89,7 @@ class _Setup7State extends State<Setup7> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: iProvider.imodel
+                    color: aProvider.imodel
                         ? Colors.white
                         : Color.fromARGB(255, 179, 160, 255),
                   ),
@@ -105,8 +102,8 @@ class _Setup7State extends State<Setup7> {
             onTap: () {
               aProvider.toggleamode();
               if (aProvider.amodel == true) {
-                bProvider.bmodel = false;
-                iProvider.imodel = false;
+                aProvider.bmodel = false;
+                aProvider.imodel = false;
               }
             },
             child: Container(
@@ -133,8 +130,8 @@ class _Setup7State extends State<Setup7> {
             ),
           ),
           SizedBox(height: 250),
-          if (bProvider.bmodel == true ||
-              iProvider.imodel == true ||
+          if (aProvider.bmodel == true ||
+              aProvider.imodel == true ||
               aProvider.amodel == true)
             GestureDetector(
               onTap: () async {

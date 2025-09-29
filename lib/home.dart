@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitbody/provider/activitymodel.dart';
+import 'package:fitbody/provider/starmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -124,6 +127,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
+              SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -147,13 +151,23 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         Positioned(
-                          top: 10,
-                          right: 10,
-                          child: Icon(
-                            Icons.star_rounded,
-                            color: Color.fromARGB(255, 226, 241, 99),
+                          top: 5,
+                          right: 5,
+                          child: Consumer<StarModel>(
+                            builder: (context, sProvider, child) {
+                              return IconButton(
+                                onPressed: () {
+                                  sProvider.toggleStar();
+                                },
+                                icon: Icon(Icons.star_rounded),
+                                color: sProvider.isStar
+                                    ? Color.fromARGB(255, 226, 241, 99)
+                                    : Colors.white,
+                              );
+                            },
                           ),
                         ),
+
                         Positioned(
                           bottom: 35,
                           left: 10,
@@ -203,7 +217,6 @@ class _HomeState extends State<Home> {
                       border: Border.all(width: 1, color: Colors.white),
                     ),
                     child: Stack(
-                      //  crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.asset('assets/images/r2.png'),
                         Positioned(
@@ -215,9 +228,21 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         Positioned(
-                          top: 10,
-                          right: 10,
-                          child: Icon(Icons.star_rounded, color: Colors.white),
+                          top: 5,
+                          right: 5,
+                          child: Consumer<StarModel>(
+                            builder: (context, sProvider, child) {
+                              return IconButton(
+                                onPressed: () {
+                                  sProvider.toggleStar2();
+                                },
+                                icon: Icon(Icons.star_rounded),
+                                color: sProvider.isStar2
+                                    ? Color.fromARGB(255, 226, 241, 99)
+                                    : Colors.white,
+                              );
+                            },
+                          ),
                         ),
                         Positioned(
                           bottom: 35,
@@ -278,19 +303,25 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              'Weekly\n Challenge',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 226, 241, 99),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Weekly\nChallenge',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 226, 241, 99),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Plank With Hip Twist',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
+                              Text(
+                                'Plank With Hip Twist',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
                         ),
                         Container(
                           // height: 150,
@@ -307,6 +338,104 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
+              ///////////////WEEKLY CHALLENGES END//////////////////
+              SizedBox(height: 20),
+
+              ///////////////ARTICLE & TIPS//////////////////
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(width: 20),
+                      Text(
+                        'Articles & Tips',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Color.fromARGB(255, 226, 241, 99),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(width: 20),
+                ],
+              ),
+
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: 130,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 35, 35, 35),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(width: 1, color: Colors.white),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/a1.png'),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 1,
+                          right: 1,
+                          child: Consumer<StarModel>(
+                            builder: (context, sProvider, child) {
+                              return IconButton(
+                                onPressed: () {
+                                  sProvider.toggleStar3();
+                                },
+                                icon: Icon(Icons.star_rounded),
+                                color: sProvider.isStar3
+                                    ? Color.fromARGB(255, 226, 241, 99)
+                                    : Colors.white,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 130,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 35, 35, 35),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      border: Border.all(width: 1, color: Colors.white),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/a2.png'),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 1,
+                          right: 1,
+                          child: Consumer<StarModel>(
+                            builder: (context, sProvider, child) {
+                              return IconButton(
+                                onPressed: () {
+                                  sProvider.toggleStar4();
+                                },
+                                icon: Icon(Icons.star_rounded),
+                                color: sProvider.isStar4
+                                    ? Color.fromARGB(255, 226, 241, 99)
+                                    : Colors.white,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              ///////////////ARTICLE & TIPS ENDS//////////////////
             ],
           );
         },

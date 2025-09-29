@@ -1,14 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitbody/home.dart';
 import 'package:fitbody/nav.dart';
-import 'package:fitbody/provider/amodel.dart';
-import 'package:fitbody/provider/bModel.dart';
+import 'package:fitbody/provider/activitymodel.dart';
+
+import 'package:fitbody/provider/starmodel.dart';
 import 'package:fitbody/setup/bio.dart';
-import 'package:fitbody/provider/femalemodel.dart';
-import 'package:fitbody/provider/imodel.dart';
-import 'package:fitbody/provider/kgmodel.dart';
-import 'package:fitbody/provider/lbsmodel.dart';
-import 'package:fitbody/provider/malemodel.dart';
+import 'package:fitbody/provider/gendermodel.dart';
+import 'package:fitbody/provider/weightmodel.dart';
+
 import 'package:fitbody/register.dart';
 import 'package:fitbody/setup/setup.dart';
 import 'package:fitbody/setup/setupage.dart';
@@ -24,13 +23,10 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => MaleModel()),
-        ChangeNotifierProvider(create: (_) => FemaleModel()),
-        ChangeNotifierProvider(create: (_) => KgModel()),
-        ChangeNotifierProvider(create: (_) => LbsModel()),
-        ChangeNotifierProvider(create: (_) => Bmodel()),
-        ChangeNotifierProvider(create: (_) => Imodel()),
-        ChangeNotifierProvider(create: (_) => Amodel()),
+        ChangeNotifierProvider(create: (_) => GenderModel()),
+        ChangeNotifierProvider(create: (_) => WeightModel()),
+
+        ChangeNotifierProvider(create: (_) => StarModel()),
       ],
       child: const MainApp(),
     ),

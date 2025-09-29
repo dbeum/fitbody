@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitbody/provider/femalemodel.dart';
-import 'package:fitbody/provider/malemodel.dart';
+import 'package:fitbody/provider/gendermodel.dart';
+
 import 'package:fitbody/setup/setupage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +17,7 @@ class _Setup2State extends State<Setup2> {
   String? selectedGender;
   @override
   Widget build(BuildContext context) {
-    final maleProvider = Provider.of<MaleModel>(context);
-    final femaleProvider = Provider.of<FemaleModel>(context);
+    final genderProvider = Provider.of<GenderModel>(context);
 
     return Scaffold(
       appBar: AppBar(),
@@ -38,16 +37,16 @@ class _Setup2State extends State<Setup2> {
 
           GestureDetector(
             onTap: () {
-              maleProvider.toggleMale();
-              if (maleProvider.ismale == true) {
-                femaleProvider.isfemale = false;
+              genderProvider.toggleMale();
+              if (genderProvider.ismale == true) {
+                genderProvider.isfemale = false;
               }
             },
             child: Container(
               height: 200,
               width: 200,
               decoration: BoxDecoration(
-                color: maleProvider.ismale
+                color: genderProvider.ismale
                     ? Color.fromARGB(255, 226, 241, 99)
                     : Color.fromARGB(37, 255, 255, 255),
                 borderRadius: BorderRadius.all(Radius.circular(360)),
@@ -72,16 +71,16 @@ class _Setup2State extends State<Setup2> {
           SizedBox(height: 50),
           GestureDetector(
             onTap: () {
-              femaleProvider.toggleFemale();
-              if (femaleProvider.isfemale == true) {
-                maleProvider.ismale = false;
+              genderProvider.toggleFemale();
+              if (genderProvider.isfemale == true) {
+                genderProvider.ismale = false;
               }
             },
             child: Container(
               height: 200,
               width: 200,
               decoration: BoxDecoration(
-                color: femaleProvider.isfemale
+                color: genderProvider.isfemale
                     ? Color.fromARGB(255, 226, 241, 99)
                     : Color.fromARGB(37, 255, 255, 255),
                 borderRadius: BorderRadius.all(Radius.circular(360)),
@@ -104,7 +103,7 @@ class _Setup2State extends State<Setup2> {
             ),
           ),
           SizedBox(height: 50),
-          if (maleProvider.ismale == true || femaleProvider.isfemale == true)
+          if (genderProvider.ismale == true || genderProvider.isfemale == true)
             GestureDetector(
               onTap: () async {
                 final user = FirebaseAuth.instance.currentUser;

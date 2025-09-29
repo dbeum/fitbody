@@ -50,6 +50,14 @@ flutter:
     - assets/images/r1.png
     - assets/images/r2.png
     - assets/images/wc.png
+    - assets/images/a1.png
+    - assets/images/p.png
+    - assets/images/f.png
+    - assets/images/s.png
+    - assets/images/h.png
+    - assets/images/l.png
+    - assets/images/pp.png
+    - assets/images/a2.png
 
 flutter_native_splash:
   color: "#232323"

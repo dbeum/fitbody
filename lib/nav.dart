@@ -1,4 +1,6 @@
 import 'package:fitbody/home.dart';
+import 'package:fitbody/profile.dart';
+import 'package:fitbody/search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -36,11 +38,7 @@ class _NavState extends State<Nav> {
         children: [
           IndexedStack(
             index: _selectedIndex,
-            children: [
-              const Home(),
-              //     const Search(),
-              //    const Library(),
-            ],
+            children: [const Home(), const Search(), const Profile()],
           ),
         ],
       ),

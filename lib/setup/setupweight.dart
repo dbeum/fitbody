@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitbody/provider/femalemodel.dart';
-import 'package:fitbody/provider/kgmodel.dart';
-import 'package:fitbody/provider/lbsmodel.dart';
-import 'package:fitbody/provider/malemodel.dart';
+import 'package:fitbody/provider/gendermodel.dart';
+import 'package:fitbody/provider/weightmodel.dart';
+
 import 'package:fitbody/setup/setupheight.dart';
 import 'package:flutter/material.dart';
 import 'package:numeric_selector/numeric_selector.dart';
@@ -20,8 +19,8 @@ class _Setup4State extends State<Setup4> {
   String? selectedWeight;
   @override
   Widget build(BuildContext context) {
-    final kgProvider = Provider.of<KgModel>(context);
-    final lbsProvider = Provider.of<LbsModel>(context);
+    final wProvider = Provider.of<WeightModel>(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -42,9 +41,9 @@ class _Setup4State extends State<Setup4> {
             children: [
               GestureDetector(
                 onTap: () {
-                  kgProvider.toggleKg();
-                  if (kgProvider.kgmodel == true) {
-                    lbsProvider.lbsModel = false;
+                  wProvider.toggleKg();
+                  if (wProvider.kgmodel == true) {
+                    wProvider.lbsModel = false;
                   }
                 },
                 child: Container(
@@ -71,9 +70,9 @@ class _Setup4State extends State<Setup4> {
               Container(width: 5, height: 80, color: Colors.black),
               GestureDetector(
                 onTap: () {
-                  lbsProvider.toggleLbs();
-                  if (lbsProvider.lbsModel == true) {
-                    kgProvider.kgmodel = false;
+                  wProvider.toggleLbs();
+                  if (wProvider.lbsModel == true) {
+                    wProvider.kgmodel = false;
                   }
                 },
                 child: Container(
@@ -100,7 +99,7 @@ class _Setup4State extends State<Setup4> {
             ],
           ),
           SizedBox(height: 50),
-          if (lbsProvider.lbsModel == true)
+          if (wProvider.lbsModel == true)
             HorizontalNumericSelector(
               minValue: 66,
               maxValue: 440,
@@ -125,7 +124,7 @@ class _Setup4State extends State<Setup4> {
               showArrows: true,
               enableVibration: true,
             ),
-          if (kgProvider.kgmodel == true)
+          if (wProvider.kgmodel == true)
             HorizontalNumericSelector(
               minValue: 30,
               maxValue: 200,
@@ -150,7 +149,7 @@ class _Setup4State extends State<Setup4> {
               showArrows: true,
               enableVibration: true,
             ),
-          if (kgProvider.kgmodel == false && lbsProvider.lbsModel == false)
+          if (wProvider.kgmodel == false && wProvider.lbsModel == false)
             HorizontalNumericSelector(
               minValue: 30,
               maxValue: 200,
