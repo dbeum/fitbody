@@ -367,71 +367,81 @@ class _HomeState extends State<Home> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: 130,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 35, 35, 35),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      border: Border.all(width: 1, color: Colors.white),
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/a1.png'),
-                      ),
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          top: 1,
-                          right: 1,
-                          child: Consumer<StarModel>(
-                            builder: (context, sProvider, child) {
-                              return IconButton(
-                                onPressed: () {
-                                  sProvider.toggleStar3();
-                                },
-                                icon: Icon(Icons.star_rounded),
-                                color: sProvider.isStar3
-                                    ? Color.fromARGB(255, 226, 241, 99)
-                                    : Colors.white,
-                              );
-                            },
+                  Column(
+                    children: [
+                      Container(
+                        height: 130,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 35, 35, 35),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          border: Border.all(width: 1, color: Colors.white),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/a1.png'),
                           ),
                         ),
-                      ],
-                    ),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              top: 1,
+                              right: 1,
+                              child: Consumer<StarModel>(
+                                builder: (context, sProvider, child) {
+                                  return IconButton(
+                                    onPressed: () {
+                                      sProvider.toggleStar3();
+                                    },
+                                    icon: Icon(Icons.star_rounded),
+                                    color: sProvider.isStar3
+                                        ? Color.fromARGB(255, 226, 241, 99)
+                                        : Colors.white,
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Text('Supplement Guide...'),
+                    ],
                   ),
-                  Container(
-                    height: 130,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 35, 35, 35),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      border: Border.all(width: 1, color: Colors.white),
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/a2.png'),
-                      ),
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          top: 1,
-                          right: 1,
-                          child: Consumer<StarModel>(
-                            builder: (context, sProvider, child) {
-                              return IconButton(
-                                onPressed: () {
-                                  sProvider.toggleStar4();
-                                },
-                                icon: Icon(Icons.star_rounded),
-                                color: sProvider.isStar4
-                                    ? Color.fromARGB(255, 226, 241, 99)
-                                    : Colors.white,
-                              );
-                            },
+                  Column(
+                    children: [
+                      Container(
+                        height: 130,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 35, 35, 35),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          border: Border.all(width: 1, color: Colors.white),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/a2.png'),
                           ),
                         ),
-                      ],
-                    ),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              top: 1,
+                              right: 1,
+                              child: Consumer<StarModel>(
+                                builder: (context, sProvider, child) {
+                                  return IconButton(
+                                    onPressed: () {
+                                      sProvider.toggleStar4();
+                                    },
+                                    icon: Icon(Icons.star_rounded),
+                                    color: sProvider.isStar4
+                                        ? Color.fromARGB(255, 226, 241, 99)
+                                        : Colors.white,
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Text('15 Quick & Effective..'),
+                    ],
                   ),
                 ],
               ),

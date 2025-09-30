@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitbody/auth.dart';
 import 'package:fitbody/home.dart';
+import 'package:fitbody/login.dart';
 import 'package:fitbody/nav.dart';
 import 'package:fitbody/provider/activitymodel.dart';
 
@@ -67,7 +69,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
-      home: Nav(),
+      home: AuthCheck(),
       debugShowCheckedModeBanner: false,
     );
   }

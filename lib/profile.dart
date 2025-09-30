@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitbody/login.dart';
+import 'package:fitbody/profile_edit.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -63,9 +66,9 @@ class _ProfileState extends State<Profile> {
 
           final userData = snapshot.data!;
           return Container(
-            height: MediaQuery.of(context).size.width * 1,
+            height: 1000,
             child: Stack(
-              clipBehavior: Clip.none, // prevents clipping
+              clipBehavior: Clip.none,
               children: [
                 Container(
                   height: 250,
@@ -133,210 +136,240 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
 
+                // Profile
                 Positioned(
                   top: 350,
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width:
-                              MediaQuery.of(context).size.width *
-                              0.9, // full width
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  left: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => ProfileEdit(userData: userData),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(width: 40),
-                                  Image.asset(
-                                    'assets/images/p.png',
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text('Profile'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color.fromARGB(255, 226, 241, 99),
-                                  ),
-                                  SizedBox(width: 10),
-                                ],
-                              ),
+                              Image.asset('assets/images/p.png', height: 30),
+                              const SizedBox(width: 10),
+                              const Text('Profile'),
                             ],
                           ),
-                        ),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color.fromARGB(255, 226, 241, 99),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 20),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ),
+                  ),
+                ),
+
+                // Favourite
+                Positioned(
+                  top: 400,
+                  left: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => Login()),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(width: 40),
-                                  Image.asset(
-                                    'assets/images/f.png',
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text('Favourite'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color.fromARGB(255, 226, 241, 99),
-                                  ),
-                                  SizedBox(width: 10),
-                                ],
-                              ),
+                              Image.asset('assets/images/f.png', height: 30),
+                              const SizedBox(width: 10),
+                              const Text('Favourite'),
                             ],
                           ),
-                        ),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color.fromARGB(255, 226, 241, 99),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 20),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ),
+                  ),
+                ),
+
+                // Privacy
+                Positioned(
+                  top: 450,
+                  left: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => Login()),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(width: 40),
-                                  Image.asset(
-                                    'assets/images/pp.png',
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text('Privacy Policy'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color.fromARGB(255, 226, 241, 99),
-                                  ),
-                                  SizedBox(width: 10),
-                                ],
-                              ),
+                              Image.asset('assets/images/pp.png', height: 30),
+                              const SizedBox(width: 10),
+                              const Text('Privacy'),
                             ],
                           ),
-                        ),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color.fromARGB(255, 226, 241, 99),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 20),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ),
+                  ),
+                ),
+
+                // Settings
+                Positioned(
+                  top: 500,
+                  left: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => Login()),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(width: 40),
-                                  Image.asset(
-                                    'assets/images/s.png',
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text('Settings'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color.fromARGB(255, 226, 241, 99),
-                                  ),
-                                  SizedBox(width: 10),
-                                ],
-                              ),
+                              Image.asset('assets/images/s.png', height: 30),
+                              const SizedBox(width: 10),
+                              const Text('Settings'),
                             ],
                           ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  SizedBox(width: 40),
-                                  Image.asset(
-                                    'assets/images/h.png',
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text('Help'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color.fromARGB(255, 226, 241, 99),
-                                  ),
-                                  SizedBox(width: 10),
-                                ],
-                              ),
-                            ],
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color.fromARGB(255, 226, 241, 99),
                           ),
-                        ),
+                        ],
                       ),
-                      SizedBox(height: 20),
-                      GestureDetector(
-                        onTap: () async {
-                          await FirebaseAuth.instance.signOut();
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => Login()),
+                    ),
+                  ),
+                ),
+
+                // Logout
+                Positioned(
+                  top: 550,
+                  left: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () async {
+                      showGeneralDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        barrierLabel: "Logout Menu",
+                        barrierColor: Colors.black.withOpacity(0.5),
+                        pageBuilder: (context, anim1, anim2) {
+                          return BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                            child: Center(
+                              child: Material(
+                                color: const Color.fromARGB(0, 33, 33, 33),
+                                borderRadius: BorderRadius.circular(20),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        'Logout',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 16),
+                                      TextButton(
+                                        onPressed: () async {
+                                          await FirebaseAuth.instance.signOut();
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (_) => Login(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          'Yes',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          // add action
+                                        },
+                                        child: Text(
+                                          'No',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           );
                         },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        transitionBuilder: (context, anim1, anim2, child) {
+                          return FadeTransition(opacity: anim1, child: child);
+                        },
+                        transitionDuration: const Duration(milliseconds: 200),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  SizedBox(width: 40),
-                                  Image.asset(
-                                    'assets/images/l.png',
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text('Logout'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color.fromARGB(255, 226, 241, 99),
-                                  ),
-                                  SizedBox(width: 10),
-                                ],
-                              ),
+                              Image.asset('assets/images/l.png', height: 30),
+                              const SizedBox(width: 10),
+                              const Text('Logout'),
                             ],
                           ),
-                        ),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color.fromARGB(255, 226, 241, 99),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ],
